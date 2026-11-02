@@ -1,0 +1,15 @@
+---
+- name: Update apt package list
+  apt:
+    update_cache: yes
+
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: Start and enable Nginx
+  service:
+    name: nginx
+    state: started
+    enabled: yes
