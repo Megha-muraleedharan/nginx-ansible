@@ -2,9 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Check Jenkins') {
+        stage('Deploy Nginx using Ansible') {
             steps {
-                echo 'Jenkins pipeline is working!'
+                echo 'Starting Nginx deployment through Ansible'
+
+                sh '''
+                    ssh meghamurali@172.17.0.1 '
+                        cd ~/nginx-ansible &&
+                        git pull origin main
+                    '
+                '''
             }
         }
     }
